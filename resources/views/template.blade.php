@@ -15,6 +15,61 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{asset("otika-assets/css/custom.css")}}">
   <link rel='shortcut icon' type='image/x-icon' href='{{asset("otika-assets/img/favicon.ico")}}' />
+  <style>
+    .actions-cell {
+    position: relative;
+    padding-right: 80px; /* ruang aman */
+    }
+
+    .actions-space {
+        position: relative;
+        z-index: 1;
+    }
+
+    .actions-button {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 6px;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+
+      /* background: rgba(255, 255, 255, 0.55); */
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 4px 6px;
+    }
+
+    /* Muncul saat hover row */
+    tr:hover .actions-button {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Tombol */
+    .custom-btn-action {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 6px;
+        color: #555;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .custom-btn-action:hover {
+        background: rgba(64, 36, 190, 0.08);
+    }
+
+    /* .custom-btn-action.detail:hover { color: #0d6efd; }
+    .custom-btn-action.edit:hover   { color: #ffc107; }
+    .custom-btn-action.delete:hover { color: #dc3545; } */
+  </style>
+  @yield('css')
 </head>
 
 <body>
@@ -185,12 +240,15 @@
             <li class="dropdown {{ Route::is('marketplace') || Route::is('marketplace.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Marketplace</span></a>
             </li>
+            <li class="dropdown {{ Route::is('kondisiinventaris') || Route::is('kondisiinventaris.*') ? 'active' : '' }}">
+              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+            </li>
             <li class="menu-header">Master Data</li>
             <li class="dropdown {{ Route::is('produk') || Route::is('produk.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriproduk') || Route::is('kategoriproduk.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
+              <a href="{{route("kategoriproduk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('inventaris') || Route::is('inventaris.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Inventaris Toko</span></a>
@@ -216,8 +274,10 @@
         <section class="section">
           <div class="section-body">
             <!-- add content here -->
+            @yield('content')
           </div>
         </section>
+        @yield('content2')
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
@@ -321,12 +381,14 @@
   </div>
   <!-- General JS Scripts -->
   <script src="{{asset("otika-assets/js/app.min.js")}}"></script>
+  <script src="{{asset("otika-assets/bundles/jquery-ui/jquery-ui.min.js")}}"></script>
   <!-- JS Libraies -->
   <!-- Page Specific JS File -->
   <!-- Template JS File -->
   <script src="{{asset("otika-assets/js/scripts.js")}}"></script>
   <!-- Custom JS File -->
   <script src="{{asset("otika-assets/js/custom.js")}}"></script>
+  @yield('javascript')
 </body>
 
 
