@@ -15,6 +15,60 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{asset("otika-assets/css/custom.css")}}">
   <link rel='shortcut icon' type='image/x-icon' href='{{asset("otika-assets/img/favicon.ico")}}' />
+  <style>
+    .actions-cell {
+    position: relative;
+    padding-right: 80px; /* ruang aman */
+    }
+
+    .actions-space {
+        position: relative;
+        z-index: 1;
+    }
+
+    .actions-button {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 6px;
+
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+
+      /* background: rgba(255, 255, 255, 0.55); */
+      backdrop-filter: blur(6px);
+      border-radius: 8px;
+      padding: 4px 6px;
+    }
+
+    /* Muncul saat hover row */
+    tr:hover .actions-button {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Tombol */
+    .custom-btn-action {
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 6px;
+        color: #555;
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .custom-btn-action:hover {
+        background: rgba(64, 36, 190, 0.08);
+    }
+
+    /* .custom-btn-action.detail:hover { color: #0d6efd; }
+    .custom-btn-action.edit:hover   { color: #ffc107; }
+    .custom-btn-action.delete:hover { color: #dc3545; } */
+  </style>
   @yield('css')
 </head>
 
@@ -223,6 +277,7 @@
             @yield('content')
           </div>
         </section>
+        @yield('content2')
         <div class="settingSidebar">
           <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
           </a>
