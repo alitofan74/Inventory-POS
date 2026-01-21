@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    DashboardController,
+    KategoriProdukController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, "index"])->name("dashboard");
+
+//route of master menu
+Route::prefix("kategori-produk")->name("kategoriproduk.")->group(function(){
+    Route::get('/', [KategoriProdukController::class, "index"])->name("index");
+    Route::get('/baru', [KategoriProdukController::class, "createKategori"])->name("createkategori");
+});
+
+//end of route of master menu
+
+

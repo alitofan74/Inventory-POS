@@ -15,6 +15,7 @@
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{asset("otika-assets/css/custom.css")}}">
   <link rel='shortcut icon' type='image/x-icon' href='{{asset("otika-assets/img/favicon.ico")}}' />
+  @yield('css')
 </head>
 
 <body>
@@ -185,12 +186,15 @@
             <li class="dropdown {{ Route::is('marketplace') || Route::is('marketplace.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Marketplace</span></a>
             </li>
+            <li class="dropdown {{ Route::is('kondisiinventaris') || Route::is('kondisiinventaris.*') ? 'active' : '' }}">
+              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+            </li>
             <li class="menu-header">Master Data</li>
             <li class="dropdown {{ Route::is('produk') || Route::is('produk.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriproduk') || Route::is('kategoriproduk.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
+              <a href="{{route("kategoriproduk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('inventaris') || Route::is('inventaris.*') ? 'active' : '' }}">
               <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Inventaris Toko</span></a>
@@ -216,6 +220,7 @@
         <section class="section">
           <div class="section-body">
             <!-- add content here -->
+            @yield('content')
           </div>
         </section>
         <div class="settingSidebar">
@@ -321,12 +326,14 @@
   </div>
   <!-- General JS Scripts -->
   <script src="{{asset("otika-assets/js/app.min.js")}}"></script>
+  <script src="{{asset("otika-assets/bundles/jquery-ui/jquery-ui.min.js")}}"></script>
   <!-- JS Libraies -->
   <!-- Page Specific JS File -->
   <!-- Template JS File -->
   <script src="{{asset("otika-assets/js/scripts.js")}}"></script>
   <!-- Custom JS File -->
   <script src="{{asset("otika-assets/js/custom.js")}}"></script>
+  @yield('javascript')
 </body>
 
 
