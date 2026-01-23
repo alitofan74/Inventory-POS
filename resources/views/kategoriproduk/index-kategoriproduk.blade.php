@@ -105,30 +105,31 @@
 $(function(){
     $("#kategori-produk").DataTable();
 
-    $(".delete").click(function () {
-        var route = $(this).data("route")
-        swal({
-            title: 'Anda yakin ?',
-            text: 'Data akan terhapus secara permanen',
-            icon: 'warning',
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                window.location.href = route;
-            } 
-        });
-    });
+});
 
-    $(".detail").click(function(){
-        var nama_kategori = $(this).data("namakategori");
-        var deskripsi = $(this).data("deskripsi");
-
-        $("#detail-namakategori").val(nama_kategori);
-        $("#detail-deskripsi").html(deskripsi);
-        $("#modalDetail").modal();
+$(document).on("click", ".delete", function(){
+    var route = $(this).data("route")
+    swal({
+        title: 'Anda yakin ?',
+        text: 'Data akan terhapus secara permanen',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
     })
+    .then((willDelete) => {
+        if (willDelete) {
+            window.location.href = route;
+        } 
+    });
+});
+
+$(document).on("click", ".detail", function(){
+    var nama_kategori = $(this).data("namakategori");
+    var deskripsi = $(this).data("deskripsi");
+
+    $("#detail-namakategori").val(nama_kategori);
+    $("#detail-deskripsi").html(deskripsi);
+    $("#modalDetail").modal();
 });
 </script>
 @endsection

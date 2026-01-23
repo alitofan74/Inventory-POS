@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     DashboardController,
-    KategoriProdukController
+    KategoriProdukController,
+    ProdukController
 };
 
 /*
@@ -38,7 +39,13 @@ Route::view('/kondisi-inventaris', 'main.kondisi-inventaris')->name('kondisiinve
 
 //route of master menu
 Route::prefix("produk")->name("produk.")->group(function(){
-    Route::view('/', 'produk.index')->name('index');
+    Route::get("/", [ProdukController::class, "index"])->name("index");
+    Route::get("/baru", [ProdukController::class, "create"])->name("create");
+    Route::post("/simpan", [ProdukController::class, "save"])->name("save");
+    Route::get("/edit/{id}", [ProdukController::class, "edit"])->name("edit");
+    Route::post("/update", [ProdukController::class, "update"])->name("update");
+    Route::get("/detail/{id}", [ProdukController::class, "detail"])->name("detail");
+    Route::get("/delete/{id}", [ProdukController::class, "delete"])->name("delete");
 });
 
 
