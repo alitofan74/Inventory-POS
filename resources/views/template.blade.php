@@ -195,7 +195,7 @@
                 </a>
               </div>
               <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                <a href="">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
@@ -204,11 +204,11 @@
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+              <a href="{{route("profile")}}" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profil
-              </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+              </a> <a href="{{route("aktivitasakun")}}" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                 Aktifitas Akun
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+              </a> <a href="{{route("pengaturan")}}" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                 Pengaturan
               </a>
               <div class="dropdown-divider"></div>
@@ -222,7 +222,7 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
+            <a href="{{route("dashboard")}}"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
                 class="logo-name">Otika</span>
             </a>
           </div>

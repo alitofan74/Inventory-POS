@@ -17,6 +17,14 @@ use App\Http\Controllers\{
 |
 */
 
+// route of navbar profile
+Route::view('/profil', 'profile.index')->name("profile");
+Route::view('/aktivitas-akun', 'profile.aktivitas-akun')->name("aktivitasakun");
+Route::view('/pengaturan', 'profile.pengaturan')->name("pengaturan");
+
+
+// end of route navbar profile
+
 // route of main
 Route::get('/', [DashboardController::class, "index"])->name("dashboard");
 Route::view('/penjualan', 'main.penjualan')->name('penjualan');
