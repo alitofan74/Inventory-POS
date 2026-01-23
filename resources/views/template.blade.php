@@ -85,7 +85,7 @@
             <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                 <i data-feather="maximize"></i>
               </a></li>
-           
+
           </ul>
         </div>
         <ul class="navbar-nav navbar-right">
@@ -195,7 +195,7 @@
                 </a>
               </div>
               <div class="dropdown-footer text-center">
-                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                <a href="">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
           </li>
@@ -204,11 +204,11 @@
                 class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello Sarah Smith</div>
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="far
+              <a href="{{route("profile")}}" class="dropdown-item has-icon"> <i class="far
 										fa-user"></i> Profil
-              </a> <a href="timeline.html" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
+              </a> <a href="{{route("aktivitasakun")}}" class="dropdown-item has-icon"> <i class="fas fa-bolt"></i>
                 Aktifitas Akun
-              </a> <a href="#" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
+              </a> <a href="{{route("pengaturan")}}" class="dropdown-item has-icon"> <i class="fas fa-cog"></i>
                 Pengaturan
               </a>
               <div class="dropdown-divider"></div>
@@ -222,49 +222,49 @@
       <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="index.html"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
+            <a href="{{route("dashboard")}}"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
                 class="logo-name">Otika</span>
             </a>
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown {{ Route::is('dashboard') || Route::is('dashboard.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+              <a href="{{route("dashboard")}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown {{ Route::is('penjualan') || Route::is('penjualan.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
+              <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('updatestok') || Route::is('updatestok.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Update Stok ( + )</span></a>
+              <a href="{{route("updatestok")}}" class="nav-link"><i data-feather="monitor"></i><span>Update Stok ( + )</span></a>
             </li>
             <li class="dropdown {{ Route::is('marketplace') || Route::is('marketplace.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Marketplace</span></a>
+              <a href="{{route("marketplace")}}" class="nav-link"><i data-feather="monitor"></i><span>Marketplace</span></a>
             </li>
             <li class="dropdown {{ Route::is('kondisiinventaris') || Route::is('kondisiinventaris.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+              <a href="{{route("kondisiinventaris")}}" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
             </li>
             <li class="menu-header">Master Data</li>
             <li class="dropdown {{ Route::is('produk') || Route::is('produk.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Produk</span></a>
+              <a href="{{route("produk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriproduk') || Route::is('kategoriproduk.*') ? 'active' : '' }}">
               <a href="{{route("kategoriproduk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('inventaris') || Route::is('inventaris.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Inventaris Toko</span></a>
+              <a href="{{route("inventaris.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Inventaris Toko</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriinv') || Route::is('kategoriinv.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kategori Inventaris</span></a>
+              <a href="{{route("kategoriinv.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Inventaris</span></a>
             </li>
             <li class="menu-header">Laporan</li>
             <li class="dropdown {{ Route::is('lappenjualan') || Route::is('lappenjualan.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
+              <a href="{{route("lappenjualan")}}" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('lapbrgmasuk') || Route::is('lapbrgmasuk.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Produk Masuk</span></a>
+              <a href="{{route("lapbrgmasuk")}}" class="nav-link"><i data-feather="monitor"></i><span>Produk Masuk</span></a>
             </li>
             <li class="dropdown {{ Route::is('lapkondisiinv') || Route::is('lapkondisiinv.*') ? 'active' : '' }}">
-              <a href="index.html" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+              <a href="{{route("lapkondisiinv")}}" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
             </li>
           </ul>
         </aside>
