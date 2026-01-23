@@ -229,42 +229,42 @@
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown {{ Route::is('dashboard') || Route::is('dashboard.*') ? 'active' : '' }}">
-              <a href="{{route("dashboard")}}" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+              <a href="{{route("dashboard")}}" class="nav-link"><i data-feather="codesandbox"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown {{ Route::is('penjualan') || Route::is('penjualan.*') ? 'active' : '' }}">
-              <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
+              <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('updatestok') || Route::is('updatestok.*') ? 'active' : '' }}">
-              <a href="{{route("updatestok")}}" class="nav-link"><i data-feather="monitor"></i><span>Update Stok ( + )</span></a>
+              <a href="{{route("updatestok")}}" class="nav-link"><i data-feather="plus-square"></i><span>Update Stok ( + )</span></a>
             </li>
             <li class="dropdown {{ Route::is('marketplace') || Route::is('marketplace.*') ? 'active' : '' }}">
-              <a href="{{route("marketplace")}}" class="nav-link"><i data-feather="monitor"></i><span>Marketplace</span></a>
+              <a href="{{route("marketplace")}}" class="nav-link"><i data-feather="shopping-bag"></i><span>Marketplace</span></a>
             </li>
             <li class="dropdown {{ Route::is('kondisiinventaris') || Route::is('kondisiinventaris.*') ? 'active' : '' }}">
-              <a href="{{route("kondisiinventaris")}}" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+              <a href="{{route("kondisiinventaris")}}" class="nav-link"><i data-feather="clipboard"></i><span>Kondisi Inventaris</span></a>
             </li>
             <li class="menu-header">Master Data</li>
             <li class="dropdown {{ Route::is('produk') || Route::is('produk.*') ? 'active' : '' }}">
-              <a href="{{route("produk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Produk</span></a>
+              <a href="{{route("produk.index")}}" class="nav-link"><i data-feather="package"></i><span>Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriproduk') || Route::is('kategoriproduk.*') ? 'active' : '' }}">
-              <a href="{{route("kategoriproduk.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Produk</span></a>
+              <a href="{{route("kategoriproduk.index")}}" class="nav-link"><i data-feather="tag"></i><span>Kategori Produk</span></a>
             </li>
             <li class="dropdown {{ Route::is('inventaris') || Route::is('inventaris.*') ? 'active' : '' }}">
-              <a href="{{route("inventaris.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Inventaris Toko</span></a>
+              <a href="{{route("inventaris.index")}}" class="nav-link"><i data-feather="layers"></i><span>Inventaris Toko</span></a>
             </li>
             <li class="dropdown {{ Route::is('kategoriinv') || Route::is('kategoriinv.*') ? 'active' : '' }}">
-              <a href="{{route("kategoriinv.index")}}" class="nav-link"><i data-feather="monitor"></i><span>Kategori Inventaris</span></a>
+              <a href="{{route("kategoriinv.index")}}" class="nav-link"><i data-feather="tag"></i><span>Kategori Inventaris</span></a>
             </li>
             <li class="menu-header">Laporan</li>
             <li class="dropdown {{ Route::is('lappenjualan') || Route::is('lappenjualan.*') ? 'active' : '' }}">
-              <a href="{{route("lappenjualan")}}" class="nav-link"><i data-feather="monitor"></i><span>Penjualan</span></a>
+              <a href="{{route("lappenjualan")}}" class="nav-link"><i data-feather="bar-chart"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('lapbrgmasuk') || Route::is('lapbrgmasuk.*') ? 'active' : '' }}">
-              <a href="{{route("lapbrgmasuk")}}" class="nav-link"><i data-feather="monitor"></i><span>Produk Masuk</span></a>
+              <a href="{{route("lapbrgmasuk")}}" class="nav-link"><i data-feather="download"></i><span>Produk Masuk</span></a>
             </li>
             <li class="dropdown {{ Route::is('lapkondisiinv') || Route::is('lapkondisiinv.*') ? 'active' : '' }}">
-              <a href="{{route("lapkondisiinv")}}" class="nav-link"><i data-feather="monitor"></i><span>Kondisi Inventaris</span></a>
+              <a href="{{route("lapkondisiinv")}}" class="nav-link"><i data-feather="clipboard"></i><span>Kondisi Inventaris</span></a>
             </li>
           </ul>
         </aside>
