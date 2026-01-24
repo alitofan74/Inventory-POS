@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     DashboardController,
-    KategoriProdukController
+    KategoriProdukController,
+    KategoriInventarisController
 };
 
 /*
@@ -58,7 +59,12 @@ Route::prefix("inventaris-toko")->name("inventaris.")->group(function(){
 
 
 Route::prefix("kategori-inventaris")->name("kategoriinv.")->group(function(){
-    Route::view('/', 'kategoriinventaris.index')->name('index');
+    Route::get('/', [KategoriInventarisController::class, "index"])->name('index');
+    Route::get('/baru', [KategoriInventarisController::class, "createkategori"])->name('createkategori');
+    Route::post('/simpan', [KategoriInventarisController::class, "savekategori"])->name("savekategori");
+    Route::get('/edit/{id}', [KategoriInventarisController::class, "editkategori"])->name('editkategori');
+    Route::post('/update', [KategoriInventarisController::class, "updateKategori"])->name("updatekategori");
+    Route::get('/delete/{id}', [KategoriInventarisController::class, "deletekategori"])->name("deletekategori");
 });
 
 
