@@ -5,7 +5,8 @@ use App\Http\Controllers\{
     DashboardController,
     KategoriProdukController,
     ProdukController,
-    KategoriInventarisController
+    KategoriInventarisController,
+    InventarisController,
 };
 
 /*
@@ -63,7 +64,15 @@ Route::prefix("kategori-produk")->name("kategoriproduk.")->group(function(){
 
 
 Route::prefix("inventaris-toko")->name("inventaris.")->group(function(){
-    Route::view('/', 'inventaris.index')->name('index');
+    Route::get('/', [InventarisController::class, "index"])->name('index');
+    Route::get('/baru', [InventarisController::class, "createinventaris"])->name('createinventaris');
+    Route::post('/simpan', [InventarisController::class, "saveinventaris"])->name("saveinventaris");
+    Route::get('/edit/{id}', [InventarisController::class, "editinventaris"])->name('editinventaris');
+    Route::post('/update', [InventarisController::class, "updateinventaris"])->name("updateinventaris");
+    Route::get("/detail/{id}", [InventarisController::class, "detailinventaris"])->name("detailinventaris");
+    Route::get('/delete/{id}', [InventarisController::class, "deleteinventaris"])->name("deleteinventaris");
+    Route::get("/upload-gambar/{id}", [InventarisController::class, "uploadGambar"])->name("upload-gambar");
+    Route::post("/simpan-gambar", [InventarisController::class, "simpanGambar"])->name("simpan-gambar");
 });
 
 
