@@ -62,7 +62,8 @@ Route::prefix("inventaris-toko")->name("inventaris.")->group(function(){
     Route::post('/update', [InventarisController::class, "updateinventaris"])->name("updateinventaris");
     Route::get("/detail/{id}", [InventarisController::class, "detailinventaris"])->name("detailinventaris");
     Route::get('/delete/{id}', [InventarisController::class, "deleteinventaris"])->name("deleteinventaris");
-
+    Route::get("/upload-gambar/{id}", [InventarisController::class, "uploadGambar"])->name("upload-gambar");
+    Route::post("/simpan-gambar", [InventarisController::class, "simpanGambar"])->name("simpan-gambar");
 });
 
 
