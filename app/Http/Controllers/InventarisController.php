@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\InventarisModel;
 use App\Models\KategoriInventarisModel;
+use Illuminate\Support\Facades\Storage;
 
 class InventarisController extends Controller
 {
@@ -22,7 +23,12 @@ class InventarisController extends Controller
         $validate = $this->formValidate($request);
         $save = InventarisModel::create($validate);
 
-        return redirect()->route("inventaris.index")->with('success', 'Inventaris Toko berhasil disimpan');
+        $uploadImageRoute = route("inventaris.upload-gambar", $save->id);
+        return response()->json([
+            'success'               => $save ? true : false,
+            'uploadImageRoute'      => $save ? $uploadImageRoute : [],
+            'backRoute'             => route("inventaris.index")
+        ]);
     }
 
     public function editinventaris($id){
@@ -55,12 +61,46 @@ class InventarisController extends Controller
         return redirect()->route("inventaris.index")->with('success', 'Inventaris Toko berhasil dihapus');
     }
 
-    private function formValidate($request){
-        return $request->validate([
-            'nama_inventaris'           => 'required|string|max:255',
-            'kategori_inventaris_id'    => 'required|exists:kategori_inventaris,id',
-            'deskripsi'             => 'required|string',
-        ]);
+
+    public function uploadGambar($id){
+        $inventaris = InventarisModel::with("kategori")->find($id);
+
+        return view("inventaris.gambar-inventaris", compact("inventaris"));
     }
+
+    public function simpanGambar(Request $request){
+        $validate = $this->formValidate($request, "upload-image");
+        $inventaris = InventarisModel::find($request->id);
+
+        if ($inventaris->gambar && Storage::disk('public')->exists($inventaris->gambar)) {
+            Storage::disk('public')->delete($inventaris->gambar);
+        }
+
+        $path = $request->file('gambar')->store('inventaris', 'public');
+
+        $inventaris->gambar = $path;
+        $inventaris->save();
+
+        return redirect()->route("inventaris.upload-gambar", $inventaris->id)->with("success", "Gambar inventaris Toko berhasil di upload");
+    }
+
+
+    private function formValidate($request, $case = null)
+    {
+        switch ($case) {
+            case 'upload-image':
+                return $request->validate([
+                    'gambar' => 'required|image|mimes:jpg,jpeg,png,webp|max:1024',
+                ]);
+
+            default:
+                return $request->validate([
+                    'nama_inventaris' => 'required|string|max:255',
+                    'kategori_inventaris_id' => 'required|exists:kategori_inventaris,id',
+                    'deskripsi' => 'required|string',
+                ]);
+        }
+    }
+
 
 }
