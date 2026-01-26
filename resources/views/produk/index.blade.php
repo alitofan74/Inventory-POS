@@ -103,9 +103,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="alert alert-info">
-                Produk ini belum ada gambar. <a href="#" target="_blank" class="text-dark">Tambah Gambar</a>
-            </div>
+            <div id="info-gambar"></div>
         </div>
     </div>
     </div>
@@ -155,6 +153,13 @@ $(document).on("click", ".detail", function(){
                 }else{
                     $("#txt"+key).html(data[key]);
                 }
+            }
+            if (data["gambar"] == null) {
+                var routeImg = "{{url('produk/upload-gambar/')}}/"+data["id"];
+                $("#info-gambar").html("<div class='alert alert-info'>Produk ini belum ada gambar.<a href='"+routeImg+"' class='text-dark'>Tambah Gambar</a></div>");
+            }else{
+                var routeImg = "{{asset('storage/')}}/"+data["gambar"];
+                $("#info-gambar").html("<div class='col-12 d-flex justify-content-center'><img src='"+routeImg+"' class='img img-thumbnail' width='30%'></div>")
             }
             $(".informasi-produk").modal();
         }

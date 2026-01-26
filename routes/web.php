@@ -46,6 +46,8 @@ Route::prefix("produk")->name("produk.")->group(function(){
     Route::post("/update", [ProdukController::class, "update"])->name("update");
     Route::get("/detail/{id}", [ProdukController::class, "detail"])->name("detail");
     Route::get("/delete/{id}", [ProdukController::class, "delete"])->name("delete");
+    Route::get("/upload-gambar/{id}", [ProdukController::class, "uploadGambar"])->name("upload-gambar");
+    Route::post("/simpan-gambar", [ProdukController::class, "simpanGambar"])->name("simpan-gambar");
 });
 
 
