@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     ProdukController,
     KategoriInventarisController,
     InventarisController,
+    BarangMasukController,
 };
 
 /*
@@ -31,7 +32,10 @@ Route::view('/pengaturan', 'profile.pengaturan')->name("pengaturan");
 // route of main
 Route::get('/', [DashboardController::class, "index"])->name("dashboard");
 Route::view('/penjualan', 'main.penjualan')->name('penjualan');
-Route::view('/update-stok', 'main.update-stok')->name('updatestok');
+
+Route::get('/barang-masuk', [BarangMasukController::class, "index"])->name("barangmasuk");
+Route::post('/barang-masuk/simpan', [BarangMasukController::class, "savebrgmasuk"])->name("savebarangmasuk");
+
 Route::view('/marketplace', 'main.marketplace')->name('marketplace');
 Route::view('/kondisi-inventaris', 'main.kondisi-inventaris')->name('kondisiinventaris');
 
