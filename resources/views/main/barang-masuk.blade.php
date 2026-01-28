@@ -26,7 +26,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>NAMA PRODUK</label>
-                                    <select name="produk_id" class="form-control">
+                                    <select name="produk_id" id="produk_select" class="form-control">
                                         <option value="">-- Pilih Produk --</option>
                                         @foreach ($produk as $p)
                                             <option value="{{ $p->id }}">{{ $p->nama_produk }}</option>
@@ -63,50 +63,19 @@
                         <h4> Riwayat Barang Masuk </h4>
                     </div>
                     <div class="card-body">
-                        <form method="GET" action="" >
-                            <div class="row mb-2">
-                                <div class="col-6">
-                                    <select name="produk_id" class="form-control">
-                                        <option value="">-- Pilih Produk --</option>
-                                        @foreach ($produk as $p)
-                                            <option value="{{ $p->id }}"
-                                                {{ request('produk_id') == $p->id ? 'selected' : '' }}>
-                                                {{ $p->nama_produk }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-2">
-                                    <button class="btn btn-primary btn-block h-100">Cari</button>
-                                </div>
-                            </div>
-                        </form>
-                        @if (!request('produk_id'))
-                            <p class="text-muted">Silakan pilih produk dulu untuk melihat riwayat.</p>
-                        @elseif ($brgmasuk->count() == 0)
-                            <p class="text-danger">Belum ada riwayat barang masuk untuk produk ini.</p>
-                        @else
-                            <table class="table table-sm table-bordered" id="barangmasuk">
-                                <thead>
-                                    <tr>
-                                        <th>Tanggal</th>
-                                        <th>Produk</th>
-                                        <th>Jumlah</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($brgmasuk as $r)
-                                        <tr>
-                                            <td>{{ $r->tanggal_masuk }}</td>
-                                            <td>{{ $r->produk->nama_produk }}</td>
-                                            <td>{{ $r->jumlah_masuk }}</td>
-                                            <td>{{ $r->keterangan }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        @endif
+                        <div id="infoText" class="text-muted">Silakan pilih produk dulu</div>
+                        <table class="table table-sm table-bordered" id="barangmasuk">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Produk</th>
+                                    <th>Jumlah</th>
+                                    <th>Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -117,17 +86,56 @@
 
 
 @section('css')
-<link rel="stylesheet" href="{{asset("otika-assets/bundles/datatables/datatables.min.css")}}">
-<link rel="stylesheet" href="{{asset("otika-assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css")}}">
+    <link rel="stylesheet" href="{{ asset('otika-assets/bundles/datatables/datatables.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('otika-assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
 @endsection
 
 @section('javascript')
-<script src="{{asset("otika-assets/bundles/datatables/datatables.min.js")}}"></script>
-<script src="{{asset("otika-assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js")}}"></script>
-<script>
-$(function(){
-    $("#barangmasuk").DataTable();
+    <script src="{{ asset('otika-assets/bundles/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('otika-assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script>
+        $(document).ready(function() {
 
-});
-</script>
+            let table = $('#barangmasuk').DataTable({
+                paging: true,
+                searching: true,
+            });
+
+            $("#produk_select").change(function() {
+                let produk_id = $(this).val();
+
+                $("#infoText").hide();
+                table.clear().draw();
+
+                if (produk_id == "") {
+                    $("#infoText").show().text("Silakan pilih produk dulu");
+                    return;
+                }
+
+                $.get("/ajax/barang-masuk/" + produk_id, function(data) {
+
+                    if (data.length == 0) {
+                        $("#infoText").show().text("Belum ada data barang masuk");
+                        return;
+                    }
+
+                    data.forEach(function(row) {
+                        table.row.add([
+                            row.tanggal_masuk,
+                            row.produk.nama_produk,
+                            row.jumlah_masuk,
+                            row.keterangan
+                        ]);
+                    });
+
+                    table.draw();
+                });
+            });
+
+        });
+
+        
+    </script>
 @endsection

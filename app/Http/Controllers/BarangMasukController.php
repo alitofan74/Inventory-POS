@@ -16,8 +16,6 @@ class BarangMasukController extends Controller
             $data->where('produk_id', $request->produk_id);
         }
 
-        $data->orderBy('tanggal_masuk', 'desc');
-
         $brgmasuk = $data->get();
         return view('main.barang-masuk',compact('produk','brgmasuk'));
     }
@@ -41,5 +39,16 @@ class BarangMasukController extends Controller
 
         return redirect()->route("barangmasuk")->with('success', 'Barang masuk berhasil disimpan');
     }
+
+    public function ajaxBarangMasuk($id)
+    {
+        $data = BarangMasukModel::with('produk')
+            ->where('produk_id', $id)
+            ->orderBy('tanggal_masuk', 'desc')
+            ->get();
+
+        return response()->json($data);
+    }
+
 
 }

@@ -35,6 +35,7 @@ Route::view('/penjualan', 'main.penjualan')->name('penjualan');
 
 Route::get('/barang-masuk', [BarangMasukController::class, "index"])->name("barangmasuk");
 Route::post('/barang-masuk/simpan', [BarangMasukController::class, "savebrgmasuk"])->name("savebarangmasuk");
+Route::get('/ajax/barang-masuk/{id}', [BarangMasukController::class, 'ajaxBarangMasuk']);
 
 Route::view('/marketplace', 'main.marketplace')->name('marketplace');
 Route::view('/kondisi-inventaris', 'main.kondisi-inventaris')->name('kondisiinventaris');
