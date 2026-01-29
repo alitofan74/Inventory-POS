@@ -117,7 +117,7 @@
                 $.get("/ajax/barang-masuk/" + produk_id, function(data) {
 
                     if (data.length == 0) {
-                        $("#infoText").show().text("Belum ada data barang masuk");
+                        $("#infoText").show().text("Belum ada riwayat barang masuk");
                         return;
                     }
 
