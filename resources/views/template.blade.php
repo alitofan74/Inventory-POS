@@ -234,8 +234,8 @@
             <li class="dropdown {{ Route::is('penjualan') || Route::is('penjualan.*') ? 'active' : '' }}">
               <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
             </li>
-            <li class="dropdown {{ Route::is('updatestok') || Route::is('updatestok.*') ? 'active' : '' }}">
-              <a href="{{route("updatestok")}}" class="nav-link"><i data-feather="plus-square"></i><span>Update Stok ( + )</span></a>
+            <li class="dropdown {{ Route::is('barangmasuk') || Route::is('barangmasuk.*') ? 'active' : '' }}">
+              <a href="{{route("barangmasuk")}}" class="nav-link"><i data-feather="plus-square"></i><span> Barang Masuk </span></a>
             </li>
             <li class="dropdown {{ Route::is('marketplace') || Route::is('marketplace.*') ? 'active' : '' }}">
               <a href="{{route("marketplace")}}" class="nav-link"><i data-feather="shopping-bag"></i><span>Marketplace</span></a>

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ProdukSeeder::class,
             KategoriInventarisSeeder::class,
             InventarisSeeder::class,
+            BarangMasukSeeder::class,
         ]);
     }
 }
