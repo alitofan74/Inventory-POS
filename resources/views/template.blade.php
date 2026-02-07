@@ -232,7 +232,7 @@
               <a href="{{route("dashboard")}}" class="nav-link"><i data-feather="codesandbox"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown {{ Route::is('penjualan') || Route::is('penjualan.*') ? 'active' : '' }}">
-              <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
+              <a href="{{route("penjualan.index")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('updatestok') || Route::is('updatestok.*') ? 'active' : '' }}">
               <a href="{{route("updatestok")}}" class="nav-link"><i data-feather="plus-square"></i><span>Update Stok ( + )</span></a>
