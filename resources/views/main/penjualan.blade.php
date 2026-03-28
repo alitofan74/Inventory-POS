@@ -1,15 +1,20 @@
 @extends('template')
 @section('content')
 <div class="row">
-    <div class="col-8">
+    <div class="col-3">
         <div class="card card-primary">
             <div class="card-header">
-                <h4>Penjualan Toko</h4>
+                <h4>Nota</h4>
             </div>
             <form action="{{route("penjualan.checkout")}}" enctype="multipart/form-data" id="frmcheckout">
             @method("POST")
             @csrf
             <div class="card-body">
+                <div class="form-group">
+                    <label>NOMOR NOTA</label>
+                    <input type="text" class="form-control" id="nomor_nota" name="nomor_nota" value="{{old("nomor_nota")}}">
+                    <div class="text-danger" id="errnomor_nota"></div>
+                </div>
                 <div class="form-group">
                     <label>NAMA PRODUK</label>
                     <select class="form-control" name="select_produk_id" id="select_produk_id">
@@ -42,6 +47,41 @@
                     </select>
                     <div class="text-danger" id="errjenis_jual"></div>
                 </div>
+                <div id="callback"></div>
+                <button id="btn-keranjang" class="btn btn-primary btn-sm" type="submit">Masukkan Keranjang</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h4>Detail Produk</h4>
+            </div>
+            <div class="card-body">
+    
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h4>Keranjang</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped table-hover" id="produk" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th style="width:5%;">#</th>
+                            <th>Nama Produk</th>
+                            <th>Harga</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
                 <div class="form-group">
                     <label>JUMLAH BAYAR</label>
                     <input type="number" class="form-control" id="jumlah_bayar" name="jumlah_bayar" value="{{old("jumlah_bayar")}}">
@@ -52,12 +92,11 @@
                     <input type="number" class="form-control" id="kembalian" name="kembalian" value="{{old("kembalian")}}">
                     <div class="text-danger" id="errkembalian"></div>
                 </div>
-            </div>
-            <div class="card-footer">
-                <div id="callback"></div>
+                <div id="callback2"></div>
                 <button id="btn-checkout" class="btn btn-primary btn-sm" type="submit">CHECKOUT</button>
             </div>
-            </form>
+            <div class="card-footer">
+            </div>
         </div>
     </div>
 </div>

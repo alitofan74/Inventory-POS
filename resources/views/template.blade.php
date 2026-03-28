@@ -223,7 +223,7 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="{{route("dashboard")}}"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
-                class="logo-name">Otika</span>
+                class="logo-name">InPOS</span>
             </a>
           </div>
           <ul class="sidebar-menu">
