@@ -223,7 +223,7 @@
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
             <a href="{{route("dashboard")}}"> <img alt="image" src="{{asset("otika-assets/img/logo.png")}}" class="header-logo" /> <span
-                class="logo-name">Otika</span>
+                class="logo-name">InPOS</span>
             </a>
           </div>
           <ul class="sidebar-menu">
@@ -232,7 +232,7 @@
               <a href="{{route("dashboard")}}" class="nav-link"><i data-feather="codesandbox"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown {{ Route::is('penjualan') || Route::is('penjualan.*') ? 'active' : '' }}">
-              <a href="{{route("penjualan")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
+              <a href="{{route("penjualan.index")}}" class="nav-link"><i data-feather="shopping-cart"></i><span>Penjualan</span></a>
             </li>
             <li class="dropdown {{ Route::is('barangmasuk') || Route::is('barangmasuk.*') ? 'active' : '' }}">
               <a href="{{route("barangmasuk")}}" class="nav-link"><i data-feather="plus-square"></i><span> Barang Masuk </span></a>

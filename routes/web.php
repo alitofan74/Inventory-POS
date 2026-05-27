@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     KategoriInventarisController,
     InventarisController,
     BarangMasukController,
+    PenjualanController,
 };
 
 /*
@@ -31,12 +32,18 @@ Route::view('/pengaturan', 'profile.pengaturan')->name("pengaturan");
 
 // route of main
 Route::get('/', [DashboardController::class, "index"])->name("dashboard");
-Route::view('/penjualan', 'main.penjualan')->name('penjualan');
 
 Route::get('/barang-masuk', [BarangMasukController::class, "index"])->name("barangmasuk");
 Route::post('/barang-masuk/simpan', [BarangMasukController::class, "savebrgmasuk"])->name("savebarangmasuk");
 Route::get('/ajax/barang-masuk/{id}', [BarangMasukController::class, 'ajaxBarangMasuk']);
 
+
+Route::prefix("penjualan")->name("penjualan.")->group(function(){
+    Route::get('/', [PenjualanController::class, "index"])->name('index');
+    Route::post("/checkout", [PenjualanController::class, "checkout"])->name("checkout");
+});
+
+Route::view('/update-stok', 'main.update-stok')->name('updatestok');
 Route::view('/marketplace', 'main.marketplace')->name('marketplace');
 Route::view('/kondisi-inventaris', 'main.kondisi-inventaris')->name('kondisiinventaris');
 
