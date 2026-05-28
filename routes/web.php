@@ -34,6 +34,11 @@ Route::get('/', [DashboardController::class, "index"])->name("dashboard");
 
 Route::prefix("penjualan")->name("penjualan.")->group(function(){
     Route::get('/', [PenjualanController::class, "index"])->name('index');
+    Route::get('/get-invoice', [PenjualanController::class, "getInvoice"])->name('getInvoice');
+    Route::get('/cashier', [PenjualanController::class, "cashier"])->name('cashier');
+    Route::get("/cancel", [PenjualanController::class, "cancel"])->name("cancel");
+    Route::post("/keranjang", [PenjualanController::class, "keranjang"])->name("keranjang");
+    Route::get('/hapus-item/{id}', [PenjualanController::class, 'hapusItem'])->name("hapusItem");
     Route::post("/checkout", [PenjualanController::class, "checkout"])->name("checkout");
 });
 

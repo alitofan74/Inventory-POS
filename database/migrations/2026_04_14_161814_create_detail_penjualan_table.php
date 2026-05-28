@@ -11,15 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('penjualan', function (Blueprint $table) {
+        Schema::create('detail_penjualan', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('penjualan_id')
+                  ->constrained('penjualan')
+                  ->cascadeOnDelete();
+
             $table->unsignedBigInteger('produk_id');
+
             $table->integer('jumlah_jual');
-            $table->enum('jenis_jual', ['toko', 'marketplace']);
-            $table->decimal('harga_jual', 15, 2);
-            $table->decimal('jumlah_bayar', 15, 2);
-            $table->decimal('kembalian', 15, 2);
+            $table->integer('harga_jual');
+            $table->integer('subtotal');
+
             $table->timestamps();
+
+            // Optional index biar cepat
+            $table->index('produk_id');
         });
     }
 
@@ -28,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('penjualan');
+        Schema::dropIfExists('detail_penjualan');
     }
 };

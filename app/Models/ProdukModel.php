@@ -25,7 +25,8 @@ class ProdukModel extends Model
     protected $appends = [
         "date_created",
         "date_modified",
-        "stok_barang"
+        "stok_barang",
+        "harga_jual_format"
     ];
 
     public function getDateCreatedAttribute()
@@ -42,6 +43,10 @@ class ProdukModel extends Model
 
     public function getStokBarangAttribute(){
         return $this->stok." pcs";
+    }
+
+    public function getHargaJualFormatAttribute(){
+        return 'Rp ' . number_format($this->harga_jual, 0, ',', '.');
     }
 
 
